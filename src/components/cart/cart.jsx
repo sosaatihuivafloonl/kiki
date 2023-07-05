@@ -78,6 +78,8 @@ function Cart() {
 	const [globalAddressValues, setGlobalAddressValues] = useState([]);
 	const [showMobileAddressOption, setShowMobileAddressOption] = useState('none');
 	const [showMobileAddressOptionDelete, setShowMobileAddressOptionDelete] = useState('none');
+	const [showMobilePaymentMethods, setShowMobilePaymentMethods] = useState('none');
+	const [showMobilePaymentMethodsCreditCard, setShowMobilePaymentMethodsCreditCard] = useState('none');
 
 
 	const emailInput = useRef(null);
@@ -145,6 +147,26 @@ function Cart() {
 		setShowMobileAddAddressMenu('')
 		setShowMobileAddAddress('');
 		event.preventDefault();
+	}
+
+	function handlePaymentMethodsBack() {
+		setShowMobilePaymentMethods('none');
+		setShowMobileMainMenu('')
+	}
+
+	function handlePaymentMethodsCreditCardBack() {
+		setShowMobilePaymentMethods('');
+		setShowMobilePaymentMethodsCreditCard('none')
+	}
+
+	function handlePaymentMethodsCreditCardShow() {
+		setShowMobilePaymentMethods('none');
+		setShowMobilePaymentMethodsCreditCard('')
+	}
+
+	function handlePaymentMethodsShow() {
+		setShowMobilePaymentMethods('');
+		setShowMobileMainMenu('none')
 	}
 
 
@@ -900,7 +922,7 @@ const theme2 = createTheme({
 						<svg fill="#57585a" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"></path></svg>
 					</button>
 
-					<button className="main-payment-button">
+					<button onClick={handlePaymentMethodsShow} className="main-payment-button">
 						<div className="main-payment-button-body">
 							<p>Payment</p>
 							<h2>Choose a payment method</h2>
@@ -1265,6 +1287,241 @@ const theme2 = createTheme({
 								<button onClick={handleSHowMobileOptionMenu} className="keep-address-button">No, keep address</button>
 							</div>
 						</div>
+					</div>
+
+				</div>
+				<div className="add-payment-methods" style={{display: showMobilePaymentMethods}}>
+					<div className="add-address-wrapper-header">
+						<div style={{alignItems: 'center', display: 'flex', height: '60px'}}>
+							<div className="order-delivery-container-wrapper-header-leftside">
+								<button onClick={handlePaymentMethodsBack}>
+									<svg className="" fill="#57585a" fillRule="nonzero" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+									<path d="M4.414 13l5.293 5.293a1 1 0 1 1-1.414 1.414l-7-7a1 1 0 0 1 0-1.414l7-7a1 1 0 0 1 1.414 1.414L4.414 11H22a1 1 0 0 1 0 2H4.414z" id="iconBack"></path>
+									</svg>
+								</button>
+							</div>
+							<div className="order-delivery-container-wrapper-header-center">
+								<p>Payment methods</p>
+							</div>
+							<div className="order-delivery-container-wrapper-header-right">
+								<button>Done</button>
+							</div>
+						</div>
+					</div>
+					<div className="add-payment-methods-main" style={{padding: '16px'}}>
+						<div className="add-payment-methods-main-grabPay">
+							<div style={{display: 'flex', flexDirection: 'column'}} className="add-payment-methods-main-grabPay-header">
+								<div style={{alignItems: 'center', display: 'flex'}}>
+									<div style={{alignItems: 'center', display: 'flex', flexGrow: 1}}>
+										<label className="add-payment-methods-main-grabPay-label">
+											<input style={{height: 0, opacity: 0, position: 'absolute', margin: 0}} type="radio" value='104'/>
+											<div style={{alignItems: 'flex-start', display: 'flex'}}>
+												<div style={{margin: '2px 0'}} className="add-payment-methods-main-grabPay-label-radio">
+													<svg aria-hidden="true" fill="none" height="28" viewBox="-14 -14 28 28" width="28" xmlns="http://www.w3.org/2000/svg" style={{margin: '-4px', cursor: 'not-allowed'}}><circle r="9" stroke="#57585a" strokeWidth="2"></circle><circle fill="#008f79" fillOpacity="0" r="6"></circle></svg>
+												</div>
+												<div style={{cursor: 'not-allowed'}} className="add-payment-methods-main-grabPay-label-text">
+													<img src="https://sl3-cdn.karousell.com/components/online_payment_grabpay_v3@2x.png" alt="" />
+													<div style={{display: 'flex', flexDirection: 'column'}}>
+														<span>GrabPay</span>
+													</div>
+												</div>
+											</div>
+										</label>
+									</div>
+								</div>
+								<div className="add-payment-methods-main-grabPay-footer-text">
+									<div style={{background: '#f8f8f9', padding: '8px', alignItems: 'center', display: 'flex'}}>
+										<div>
+											<span>For New Buyers - Take 1.5% off with Discount code BPMY15 (Carousell Protection Listings)</span>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div style={{borderTop: '1px solid #f0f1f1', margin: '24px 0'}}></div>
+						<div className="add-payment-methods-main-another">
+							<p>Add new payment methods</p>
+							<div className="add-payment-methods-main-another-online-banking">
+								<button>
+									<div style={{alignItems: 'center', display: 'flex', width: '100%'}}>
+										<img style={{height: '28px', width: '48px', marginRight: '16px', display: 'block'}} src="https://sl3-cdn.karousell.com/components/online_payment_fpx_v2@2x.png" alt="" />
+										<p>Online banking</p>
+										<svg fill="#57585a" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"></path></svg>
+									</div>
+								</button>
+								<div style={{gridGap: '8px', display: 'grid'}}></div>
+								<div style={{borderTop: '1px solid #f0f1f1', margin: '24px 0'}}></div>
+							</div>
+							<div className="add-payment-methods-main-credit-card">
+								<button onClick={handlePaymentMethodsCreditCardShow}>
+									<div style={{alignItems: 'center', display: 'flex', width: '100%'}}>
+										<img style={{height: '28px', width: '48px', marginRight: '16px', display: 'block'}} src="https://sl3-cdn.karousell.com/components/online_payment_card_v2@2x.png" alt="" />
+											<p>Credit or debit card</p>
+										<svg fill="#57585a" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M9.29 15.88L13.17 12 9.29 8.12c-.39-.39-.39-1.02 0-1.41.39-.39 1.02-.39 1.41 0l4.59 4.59c.39.39.39 1.02 0 1.41L10.7 17.3c-.39.39-1.02.39-1.41 0-.38-.39-.39-1.03 0-1.42z"></path></svg>
+									</div>
+								</button>
+								<div style={{gridGap: '8px', display: 'grid'}}></div>
+								<div style={{borderTop: '1px solid #f0f1f1', margin: '24px 0'}}></div>
+							</div>
+						</div>
+						<p className="add-payment-methods-footer-text">Carousell does not store your details, which are securely stored with our payment services partner and will not be visible to other Carousell users.</p>
+					</div>
+				</div>
+				<div className="add-credit-card-menu" style={{display: showMobilePaymentMethodsCreditCard}}>
+					<div style={{position: 'relative'}}>
+						<div className="add-credit-card-menu-main">
+							<div className="add-address-wrapper-header">
+								<div style={{alignItems: 'center', display: 'flex', height: '60px'}}>
+									<div className="order-delivery-container-wrapper-header-leftside">
+										<button onClick={handlePaymentMethodsCreditCardBack}>
+											<svg className="" fill="#57585a" fillRule="nonzero" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+											<path d="M4.414 13l5.293 5.293a1 1 0 1 1-1.414 1.414l-7-7a1 1 0 0 1 0-1.414l7-7a1 1 0 0 1 1.414 1.414L4.414 11H22a1 1 0 0 1 0 2H4.414z" id="iconBack"></path>
+											</svg>
+										</button>
+									</div>
+									<div className="order-delivery-container-wrapper-header-center">
+										<p>Add debit/credit card</p>
+									</div>
+									<div className="order-delivery-container-wrapper-header-right">
+										<button>Save</button>
+									</div>
+								</div>
+							</div>
+							<div style={{padding: '45px 16px 0'}} className="add-credit-card-menu-main-container">
+								<div className="add-credit-card-menu-main-container-card-number">
+									<div className="add-credit-card-menu-main-container-card-number-input">
+										<div className="mobile-credit-card-number-header-text">
+											<h2>Card number</h2>
+										</div>
+										<div style={{zIndex: 10}} className="credit-card-container">
+											<div className="credit-card-banner-visa" style={{display: showCardVisa}}>
+												<img src="https://js.stripe.com/v3/fingerprinted/img/visa-729c05c240c4bdb47b03ac81d9945bfe.svg" alt="" />
+											</div>
+											<div className="credit-card-banner-mastercard" style={{display: showCardMastercard}}>
+												<img src="https://js.stripe.com/v3/fingerprinted/img/mastercard-4d8844094130711885b5e41b28c9848f.svg" alt="" />
+											</div>
+											<div className="credit-card-banner-undefined" style={{display: showCardUndefined}}>
+												<img src="https://js.stripe.com/v3/fingerprinted/img/amex-a49b82f46c5cd6a96a6e418a6ca1717c.svg" alt="" />
+											</div>
+											<div className="credit-card-banner-normal-input-cvc" style={{display: showCardStateNormalCvc}}> 
+												<svg className="cvc" focusable="false" viewBox="0 0 32 21" role="img" aria-label="CVC">
+													<title>CVC</title>
+													<g fill="none" fillRule="evenodd">
+														<g className="Icon-fill">
+														<g transform="translate(0 2)">
+															<path d="M21.68 0H2c-.92 0-2 1.06-2 2v15c0 .94 1.08 2 2 2h25c.92 0 2-1.06 2-2V9.47a5.98 5.98 0 0 1-3 1.45V11c0 .66-.36 1-1 1H3c-.64 0-1-.34-1-1v-1c0-.66.36-1 1-1h17.53a5.98 5.98 0 0 1 1.15-9z" opacity=".2"></path>
+															<path d="M19.34 3H0v3h19.08a6.04 6.04 0 0 1 .26-3z" opacity=".3"></path>
+														</g>
+														<g transform="translate(18)">
+															<path d="M7 14A7 7 0 1 1 7 0a7 7 0 0 1 0 14zM4.22 4.1h-.79l-1.93.98v1l1.53-.8V9.9h1.2V4.1zm2.3.8c.57 0 .97.32.97.78 0 .5-.47.85-1.15.85h-.3v.85h.36c.72 0 1.21.36 1.21.88 0 .5-.48.84-1.16.84-.5 0-1-.16-1.52-.47v1c.56.24 1.12.37 1.67.37 1.31 0 2.21-.67 2.21-1.64 0-.68-.42-1.23-1.12-1.45.6-.2.99-.73.99-1.33C8.68 4.64 7.85 4 6.65 4a4 4 0 0 0-1.57.34v.98c.48-.27.97-.42 1.44-.42zm4.32 2.18c.73 0 1.24.43 1.24.99 0 .59-.51 1-1.24 1-.44 0-.9-.14-1.37-.43v1.03c.49.22.99.33 1.48.33.26 0 .5-.04.73-.1.52-.85.82-1.83.82-2.88l-.02-.42a2.3 2.3 0 0 0-1.23-.32c-.18 0-.37.01-.57.04v-1.3h1.44a5.62 5.62 0 0 0-.46-.92H9.64v3.15c.4-.1.8-.17 1.2-.17z"></path>
+														</g>
+														</g>
+													</g>
+												</svg>
+											</div>
+											<div className="credit-card-banner-normal-input-cvc-error" style={{display: showCardStateCvcError}}>
+												<svg className="cvc-error" focusable="false" viewBox="0 0 32 21">
+													<g fill="none" fillRule="evenodd">
+														<g id="error" className="Icon-fill">
+														<g id="card" transform="translate(0 2)">
+															<path id="shape" d="M21.68 0A6 6 0 1 0 29 9.47v7.15A2.4 2.4 0 0 1 26.58 19H2.42A2.4 2.4 0 0 1 0 16.62V2.38A2.4 2.4 0 0 1 2.42 0h19.26zM10 5.83c0-.46-.35-.83-.78-.83H3.78c-.43 0-.78.37-.78.83v3.34c0 .46.35.83.78.83h5.44c.43 0 .78-.37.78-.83V5.83z" opacity=".2"></path>
+															<path id="shape" d="M25 15h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0H4c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1z" opacity=".3"></path>
+														</g>
+														<g className="Icon-fill-error" transform="translate(18 4)">
+															<path d="M7 14A7 7 0 1 1 7 0a7 7 0 0 1 0 14zM4.22 4.1h-.79l-1.93.98v1l1.53-.8V9.9h1.2V4.1zm2.3.8c.57 0 .97.32.97.78 0 .5-.47.85-1.15.85h-.3v.85h.36c.72 0 1.21.36 1.21.88 0 .5-.48.84-1.16.84-.5 0-1-.16-1.52-.47v1c.56.24 1.12.37 1.67.37 1.31 0 2.21-.67 2.21-1.64 0-.68-.42-1.23-1.12-1.45.6-.2.99-.73.99-1.33C8.68 4.64 7.85 4 6.65 4a4 4 0 0 0-1.57.34v.98c.48-.27.97-.42 1.44-.42zm4.32 2.18c.73 0 1.24.43 1.24.99 0 .59-.51 1-1.24 1-.44 0-.9-.14-1.37-.43v1.03c.49.22.99.33 1.48.33.26 0 .5-.04.73-.1.52-.85.82-1.83.82-2.88l-.02-.42a2.3 2.3 0 0 0-1.23-.32c-.18 0-.37.01-.57.04v-1.3h1.44a5.62 5.62 0 0 0-.46-.92H9.64v3.15c.4-.1.8-.17 1.2-.17z"></path>
+														</g>
+														</g>
+													</g>
+												</svg>
+											</div>
+											<div className="credit-card-banner-normal-input" style={{display: showCardStateNormal}}>
+												<svg className="default-input-card" focusable="false" viewBox="0 0 32 21">
+													<g fill="none" fillRule="evenodd">
+														<g className="Icon-fill">
+														<g transform="translate(0 2)">
+															<path d="M26.58 19H2.42A2.4 2.4 0 0 1 0 16.62V2.38A2.4 2.4 0 0 1 2.42 0h24.16A2.4 2.4 0 0 1 29 2.38v14.25A2.4 2.4 0 0 1 26.58 19zM10 5.83c0-.46-.35-.83-.78-.83H3.78c-.43 0-.78.37-.78.83v3.34c0 .46.35.83.78.83h5.44c.43 0 .78-.37.78-.83V5.83z" opacity=".2"></path>
+															<path d="M25 15h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0H4c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1z" opacity=".3"></path>
+														</g>
+														</g>
+													</g>
+												</svg>
+											</div>
+											<div className="credit-card-banner-input-error" style={{display: showCardStateNormalError}}>
+												<svg className="default-input-card-error" focusable="false" viewBox="0 0 32 21">
+													<g fill="none" fillRule="evenodd">
+														<g id="error" className="Icon-fill">
+														<g id="card" transform="translate(0 2)">
+															<path id="shape" d="M21.68 0A6 6 0 1 0 29 9.47v7.15A2.4 2.4 0 0 1 26.58 19H2.42A2.4 2.4 0 0 1 0 16.62V2.38A2.4 2.4 0 0 1 2.42 0h19.26zM10 5.83c0-.46-.35-.83-.78-.83H3.78c-.43 0-.78.37-.78.83v3.34c0 .46.35.83.78.83h5.44c.43 0 .78-.37.78-.83V5.83z" opacity=".2"></path>
+															<path id="shape" d="M25 15h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0H4c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1z" opacity=".3"></path>
+														</g>
+														<g id="shape" transform="translate(18)">
+															<path d="M7 14A7 7 0 1 1 7 0a7 7 0 0 1 0 14zM6 3v4a1 1 0 0 0 2 0V3a1 1 0 0 0-2 0zm1 8.75a1.25 1.25 0 1 0 0-2.5 1.25 1.25 0 0 0 0 2.5z"></path>
+														</g>
+														</g>
+													</g>
+												</svg>
+											</div>
+											<div className="credit-card-banner-input-info-reg" style={{display: showCardStateNormalStandardError}}>
+												<svg className="default-input-card-error-standard" focusable="false" viewBox="0 0 32 21">
+													<g fill="none" fillRule="evenodd">
+														<g className="Icon-fill-error-standard">
+														<g transform="translate(0 2)">
+															<path d="M26.58 19H2.42A2.4 2.4 0 0 1 0 16.62V2.38A2.4 2.4 0 0 1 2.42 0h24.16A2.4 2.4 0 0 1 29 2.38v14.25A2.4 2.4 0 0 1 26.58 19zM10 5.83c0-.46-.35-.83-.78-.83H3.78c-.43 0-.78.37-.78.83v3.34c0 .46.35.83.78.83h5.44c.43 0 .78-.37.78-.83V5.83z" opacity=".2"></path>
+															<path d="M25 15h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0h-3c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1zm-6 0H4c-.65 0-1-.3-1-1s.35-1 1-1h3c.65 0 1 .3 1 1s-.35 1-1 1z" opacity=".3"></path>
+														</g>
+														</g>
+													</g>
+												</svg>
+											</div>
+										</div>
+										<input 
+										placeholder="Card number"
+										className="mobile-credit-card-input" 
+										type="text" />
+										<h2 className="add-credit-card-menu-main-container-card-number-input-footer-text">
+											Ewqewq
+										</h2>
+									</div>
+								</div>
+								<div className="add-credit-card-menu-main-container-card-info-input">
+									<div className="add-credit-card-menu-main-container-card-info-input-grid">
+										<div>
+											<div className="mobile-credit-card-info-date-header-text">
+												<h2>Expiry Date</h2>
+											</div>
+											<input 
+											placeholder="BB/TT"
+											className="mobile-credit-card-info-date-input" 
+											type="text" />
+										
+											<h2 className="add-credit-card-menu-main-container-card-info-input-footer-text">
+												Ewqewq
+											</h2>
+										</div>
+										<div>
+											<div className="mobile-credit-card-info-cvv-header-text">
+												<h2>CVV</h2>
+											</div>
+											<input 
+											placeholder="CVC"
+											className="mobile-credit-card-info-cvv-input" 
+											type="text" />
+										
+											<h2 className="add-credit-card-menu-main-container-card-cvv-input-footer-text">
+												Ewqewq
+											</h2>
+										</div>
+									</div>
+
+								</div>
+								
+
+
+							</div>
+							
+
+						</div>
+
 					</div>
 
 				</div>
