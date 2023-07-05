@@ -1240,11 +1240,11 @@ const theme2 = createTheme({
 				<div className="menu-select-address-options" style={{display: showMobileAddressOption}}>
 					<div className="menu-select-address-options-container">
 						<button className="menu-select-address-options-container-edit-btn">
-							<img alt="" crossorigin="anonymous" src="https://mweb-cdn.karousell.com/build/listing-edit-0f122d4d6d.svg" title=""/>
+							<img alt="" crossOrigin="anonymous" src="https://mweb-cdn.karousell.com/build/listing-edit-0f122d4d6d.svg" title=""/>
 							<span>Edit</span>
 						</button>
 						<button onClick={handleSHowMobileOptionMenuTrue} className="menu-select-address-options-container-delete-btn">
-							<svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><g fill="#57585a" stroke="#57585a"><path d="M2.5 6.5v7a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-7" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></path><path d="M.5 3.5h15" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></path><path d="M5.5 3.5v-3h5v3" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"></path></g></svg>
+							<svg height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><g fill="#57585a" stroke="#57585a"><path d="M2.5 6.5v7a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2v-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10"></path><path d="M.5 3.5h15" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10"></path><path d="M5.5 3.5v-3h5v3" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeMiterlimit="10"></path></g></svg>
 							<span>Delete</span>
 						</button>
 					</div>
@@ -1255,7 +1255,7 @@ const theme2 = createTheme({
 				<div className="menu-select-address-options-delete" style={{display: showMobileAddressOptionDelete}}>
 					<div className="menu-select-address-options-delete-container">
 						<button onClick={handleSHowMobileOptionMenu} className="close-confirm-delete-address-button">
-							<svg class="" fill="#57585a" fillRule="nonzero" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Close Icon</title><path d="M13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 1 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 1.414-1.414L12 10.586l5.293-5.293a1 1 0 0 1 1.414 1.414L13.414 12z"></path></svg>
+							<svg className="" fill="#57585a" fillRule="nonzero" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><title>Close Icon</title><path d="M13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 1 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 1.414-1.414L12 10.586l5.293-5.293a1 1 0 0 1 1.414 1.414L13.414 12z"></path></svg>
 						</button>
 						<h3>Delete this address?</h3>
 						<div>

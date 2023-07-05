@@ -10,7 +10,7 @@ function App() {
         {/* {isMobile ? */}
           {/* <Route path='/order' element={<MobileCart />} /> */}
           {/* : */}
-          <Route path='/' element={<Cart />} />
+          <Route path='/order' element={<Cart />} />
         {/* } */}
         </Routes>
     </>
