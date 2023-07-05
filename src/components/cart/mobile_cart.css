@@ -987,11 +987,407 @@ body {
 		color: #2c2c2d;
 	}
 
+	.add-new-address-info-text-postcode {
+		font-size: 14px !important;
+		line-height: 22px !important;
+		font-weight: 400 !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+		overflow-wrap: normal !important;
+		word-break: normal !important;
+		text-decoration: none !important;
+		hyphens: auto !important;
+		overflow: hidden !important;
+		text-overflow: ellipsis !important;
+		color: #991720 !important;
+		margin-top: 3px !important;
+		display: flex !important;
+	}
+
+	.add-new-address-info-text-phoneNumber {
+		margin: 8px 0 40px !important;
+		font-size: 14px !important;
+		line-height: 22px !important;
+		font-weight: 400 !important;
+		text-align: center !important;
+		white-space: nowrap !important;
+		overflow-wrap: normal !important;
+		word-break: normal !important;
+		text-decoration: none !important;
+		hyphens: auto !important;
+		overflow: hidden !important;
+		text-overflow: ellipsis !important;
+		color: #991720 !important;
+		display: flex !important;
+	}
+
+	.add-address-field {
+		margin: 24px 16px 16px;
+	}
+
+	.add-address-field-header {
+		box-shadow: inset 0 -1px 0 0 rgba(44,44,45,.07);
+		margin-bottom: 32px;
+		padding-bottom: 8px;
+	}
+
+
+	/* .main-field-center-body-info-delivery-wrapper-main-box-field-radio{
+
+	} */
+
+	.three-dots-address {
+		padding: 0;
+		z-index: 1;
+		background-color: transparent;
+		font-size: 16px;
+		align-items: center;
+		border: none;
+		display: flex;
+		justify-content: center;
+		text-transform: none;
+		margin: 0;
+		margin-left: auto;
+	}
+
+	.button-main-address {
+		padding-left: 28px;
+		display: block;
+		margin-top: 4px;
+		padding-bottom: 0;
+		padding-right: 24px;
+		padding-top: 0;
+		text-align: left;
+		background-color: transparent;
+		font-size: 16px;
+		border: none;
+		text-transform: none;
+		margin: 0;
+	}
+
+	.button-main-address h1 {
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 400;
+		text-align: left;
+		white-space: normal;
+		overflow-wrap: normal;
+		word-break: normal;
+		text-decoration: none;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #2c2c2d;
+		margin: 0;
+	}
+
+	#first-of-type-address {
+		padding-left: 0px !important;
+	}  
+	.first-of-type-address {
+		padding-left: 8px !important;
+	}
+
+	.button-main-address span {
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 400;
+		text-align: left;
+		white-space: normal;
+		overflow-wrap: normal;
+		word-break: normal;
+		text-decoration: none;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #2c2c2d;
+	}
+
+	
+	.main-adding-address-body-delivery-name {
+		font-size: 16px !important;
+		line-height: 24px;
+		font-weight: 400;
+		text-align: left;
+		white-space: normal;
+		overflow-wrap: normal;
+		word-break: normal;
+		text-decoration: none;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #2c2c2d;
+		margin: 0;
+	}
+
+	.main-adding-address-body-delivery-info-span {
+		display: block;
+		margin-top: 4px;
+		padding-bottom: 0;
+		padding-right: 24px;
+		padding-top: 0;
+		text-align: left;
+	}
+
+	.main-adding-address-body-delivery-info-span p {
+		font-size: 16px !important;
+	}
+
+	.main-adding-address-body-delivery-info-span span{
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 400;
+		text-align: left;
+		white-space: normal;
+		overflow-wrap: normal;
+		word-break: normal;
+		text-decoration: none;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #2c2c2d;
+		/* margin: 0; */
+	}
+
+	#first-of-type-address-main {
+		padding-left: 0px !important;
+	}  
+	.first-of-type-address-main {
+		padding-left: 8px !important;
+	}	
+
+	.menu-select-address-options {
+		-webkit-animation: menu-select-address-options .3s cubic-bezier(.4,0,.2,1);
+		animation: menu-select-address-options .3s cubic-bezier(.4,0,.2,1);
+		background: #fff;
+		border-radius: 4px 4px 0 0;
+		bottom: 0;
+		left: 0;
+		max-height: 80vh;
+		overflow-y: auto;
+		position: fixed;
+		right: 0;
+		z-index: 11;
+		transition: transform 0.3s ease;
+	}
 	
 
-
-
 	
+	
+	.menu-select-address-options-container {
+		background-color: #fff;
+		border: 1px solid rgba(44,44,45,.07);
+		border-radius: 8px 8px 0 0;
+		padding: 16px;
+	}
+
+	.menu-select-address-options-container-edit-btn {
+		padding: 8px;
+		color: #2c2c2d;
+		background-color: transparent;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 1.5;
+		align-items: center;
+		border: none;
+		display: flex;
+		justify-content: center;
+		text-transform: none;
+		margin: 0;
+	}
+
+	.menu-select-address-options-container-edit-btn img {
+		height: 16px;
+		margin-right: 8px;
+		width: 16px;
+		display: block;
+		overflow: hidden;
+		position: relative;
+	}
+
+	.menu-select-address-options-container-edit-btn span {
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 400;
+		text-align: left;
+		white-space: normal;
+		overflow-wrap: normal;
+		word-break: normal;
+		text-decoration: none;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #57585a;
+	}
+
+	.menu-select-address-options-container-delete-btn {
+		padding: 8px;
+		color: #2c2c2d;
+		background-color: transparent;
+		font-size: 16px;
+		font-weight: 600;
+		line-height: 1.5;
+		align-items: center;
+		border: none;
+		display: flex;
+		justify-content: center;
+		text-transform: none;
+		margin: 0;
+	}
+
+	.menu-select-address-options-container-delete-btn svg {
+		height: 16px;
+		margin-right: 8px;
+		width: 16px;
+	}
+
+	.menu-select-address-options-container-delete-btn span {
+		font-size: 16px;
+		line-height: 24px;
+		font-weight: 400;
+		text-align: left;
+		white-space: normal;
+		overflow-wrap: normal;
+		word-break: normal;
+		text-decoration: none;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #57585a;
+	}
+
+
+	.menu-select-address-options-cancel-button {
+		padding: 12px;
+		text-align: center;
+		width: 100%;
+		color: #008f79;
+		background-color: transparent;
+		font-size: 16px;
+		font-weight: 600;
+    	line-height: 1.5;
+		align-items: center;
+		border: none;
+		display: flex;
+		justify-content: center;
+		text-transform: none;
+		margin: 0;
+	}
+
+	.menu-select-address-options-cancel-button:active, .menu-select-address-options-cancel-button:focus {
+		color: #026958;
+	}
+
+	.menu-select-address-options-delete {
+		align-items: center;
+		background: rgba(44,44,45,.8);
+		display: flex;
+		height: 100%;
+		justify-content: center;
+		left: 0;
+		position: fixed;
+		top: 0;
+		width: 100%;
+		z-index: 5;
+	}
+
+	.menu-select-address-options-delete-container {
+		width: calc(100% - 96px);
+		background-color: #fff;
+		border-radius: 4px;
+		box-shadow: 0 8px 13px 0 rgba(44,44,45,.27);
+		max-height: 90vh;
+		padding: 24px;
+		position: relative;
+	}
+
+	.menu-select-address-options-delete-container h2 {
+		width: calc(100% - 16px);
+		font-size: 14px;
+		line-height: 26px;
+		font-weight: 400;
+		text-align: left;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #2c2c2d;
+	}
+
+	.close-confirm-delete-address-button {
+		position: absolute;
+		right: 12px;
+		top: 12px;
+		background-color: transparent;
+		padding: 8px;
+		font-size: 16px;
+		align-items: center;
+		border: none;
+		display: flex;
+		justify-content: center;
+		text-transform: none;
+		margin: 0;
+	}
+
+	.menu-select-address-options-delete-container h3 {
+		margin: 0px 0px 12px 0px;
+		width: calc(100% - 16px);
+		font-size: 18px;
+		line-height: 26px;
+		font-weight: 600;
+		text-align: left;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #2c2c2d;
+	}
+
+	.confirm-delete-address-button {
+		width: 100%;
+		background-color: #008f79;
+		color: #fff;
+		font-size: 16px;
+		border-radius: 4px;
+		outline: none;
+		padding: 8px 16px;
+		font-weight: 600;
+		line-height: 1.5;
+		align-items: center;
+		border: none;
+		display: flex;
+		justify-content: center;
+		text-transform: none;
+		margin-top: 16px;
+	}
+
+	.confirm-delete-address-button:active, .confirm-delete-address-button:focus {
+		background-color: #026958;
+		box-shadow: 0 0 0 4px #cce9e4;
+	}
+
+	.keep-address-button {
+		width: 100%;
+		background-color: #fff;
+		border: 1px solid #c5c5c6 !important;
+		color: #2c2c2d;
+		padding: 7px 16px !important;
+		font-size: 16px;
+		border-radius: 4px;
+		outline: none;
+		padding: 16px;
+		font-weight: 600;
+		line-height: 1.5;
+		align-items: center;
+		border: none;
+		display: flex;
+		justify-content: center;
+		text-transform: none;
+		margin-top: 16px;
+	}
+
+	.keep-address-button:active, .keep-address-button:focus {
+		background-color: #f0f1f1;
+		box-shadow: 0 0 0 4px #cce9e4;
+	}
 
 
 
