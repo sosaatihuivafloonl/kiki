@@ -1629,8 +1629,9 @@ body {
 		position: absolute;
 		z-index: 10;
 		margin-top: 57px;
-		font-size: 14px;
+		font-size: 12px;
 		font-weight: 400;
+		color: #991720;
 	}
 	
 	.add-credit-card-menu-main-container-card-info-input {
@@ -1676,10 +1677,11 @@ body {
 	
 	.add-credit-card-menu-main-container-card-info-input-footer-text {
 		margin-top: 25px;
-		font-size: 14px;
+		font-size: 12px;
 		font-weight: 400;
 		overflow-wrap: break-word;
 		width: calc(100% - 8px);
+		color: #991720;
 	}
 	
 	.add-credit-card-menu-main-container-card-info-input-grid {
@@ -1725,14 +1727,43 @@ body {
 		-webkit-text-stroke-width: thin;
 	}
 	
-	.add-credit-card-menu-main-container-card-cvv-input-footer-text {
+	/* .add-credit-card-menu-main-container-card-cvv-input-footer-text {
 		margin-top: 25px;
 		font-size: 14px;
 		font-weight: 400;
 		overflow-wrap: break-word;
+		color: #991720;
+	} */
+
+	.add-credit-card-menu-footer-text {
+		align-items: center;
+    	display: flex;
+		margin-top: 30px;
 	}
 
-	
+	.add-credit-card-menu-footer-text img {
+		height: 16px;
+		margin-right: 4px;
+		width: 16px;
+		display: block;
+		overflow: hidden;
+		position: relative;
+	}	
+
+	.add-credit-card-menu-footer-text p {
+		font-size: 14px;
+		line-height: 22px;
+		font-weight: 400;
+		text-align: left;
+		white-space: normal;
+		overflow-wrap: normal;
+    	word-break: normal;
+		hyphens: auto;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #57585a;
+		margin: 0;
+	}	
 	
 	
 	

